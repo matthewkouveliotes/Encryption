@@ -1,32 +1,37 @@
+import java.math.BigInteger;
+import java.util.Random;
+
 public class User {
-    private int secret;
-    private int key;
-    private static int p = 17;
-    private static int g = 5;
+    private BigInteger secret;
+    private BigInteger key;
+    private BigInteger p = new BigInteger("17");
+    private BigInteger g = new BigInteger("5");
+    private BigInteger receive;
 
 
     public User() {
-        secret = (int)(Math.random() * 10);
+        secret = new BigInteger(2, new Random());
     }
 
-    public User(int secret) {
+    public User(BigInteger secret) {
         this.secret = secret;
     }
 
-    public int getPubKey() {
-        return (int) Math.pow(g, secret) % p;
+    public BigInteger getPubKey() {
+        return g.modPow(secret, p);
     }
 
-    public void setReceive(int receive) {
-        key = (int) Math.pow(receive, secret) % p;
+    public void setReceive(BigInteger receive) {
+        this.receive = receive;
+        key = receive.modPow(secret, p);
     }
 
 
-    public int showKey() {
+    public BigInteger showKey() {
         return key;
     }
 
-    public int showSecret() {
+    public BigInteger showSecret() {
         return secret;
     }
 }
