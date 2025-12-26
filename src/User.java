@@ -1,7 +1,9 @@
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class User {
+    SecureRandom random = new SecureRandom();
     private BigInteger secret;
     private BigInteger key;
     private BigInteger p = new BigInteger("21929");
@@ -10,7 +12,9 @@ public class User {
 
 
     public User() {
-        secret = new BigInteger(p.bitLength() - 1, random);
+        secret = new BigInteger(p.bitLength() - 2, random);
+        if(secret.equals(BigInteger.ZERO))
+            secret = BigInteger.ONE;
     }
 
     public User(BigInteger secret) {
