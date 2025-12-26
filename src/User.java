@@ -4,13 +4,13 @@ import java.util.Random;
 public class User {
     private BigInteger secret;
     private BigInteger key;
-    private BigInteger p = new BigInteger("17");
-    private BigInteger g = new BigInteger("5");
+    private BigInteger p = new BigInteger("21929");
+    private BigInteger g = new BigInteger("3");
     private BigInteger receive;
 
 
     public User() {
-        secret = new BigInteger(2, new Random());
+        secret = new BigInteger(p.bitLength() - 1, random);
     }
 
     public User(BigInteger secret) {
