@@ -6,8 +6,8 @@ public class User {
     SecureRandom random = new SecureRandom();
     private BigInteger secret;
     private BigInteger key;
-    private BigInteger p = new BigInteger("21929");
-    private BigInteger g = new BigInteger("3");
+    private static BigInteger p = new BigInteger("21929");
+    private static BigInteger g = new BigInteger("3");
     private BigInteger receive;
 
 
